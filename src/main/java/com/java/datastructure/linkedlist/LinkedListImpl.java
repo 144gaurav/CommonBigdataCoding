@@ -19,6 +19,49 @@ public class LinkedListImpl {
          }
     }
 
+    public static LinkedListImpl deleteElementAtPosition(LinkedListImpl list, int position){
+         Node current_node = list.head;
+        int i=1;
+             if(position==0){
+                 list.head=current_node.next;
+             }
+             else{
+                 while(current_node.next!=null){
+                     if(i==position){
+                         Node next_node = current_node.next;
+                         current_node.next=next_node.next;
+                     }
+                     current_node = current_node.next;
+                     i=i+1;
+             }
+         }
+         return list;
+    }
+
+    public static LinkedListImpl insertElementAtPosition(LinkedListImpl list, int data,int position){
+         Node currentNode = list.head;
+         Node new_node = new Node(data);
+         int i =1;
+         if(position==0){
+             new_node.next = list.head;
+             list.head=new_node;
+         }
+         else{
+             while(currentNode.next!=null){
+                 if(i==position){
+                     Node tempNode = currentNode.next;
+                     currentNode.next = new_node;
+                     new_node.next = tempNode;
+                 }
+                 currentNode = currentNode.next;
+                 i=i+1;
+             }
+         }
+
+
+         return list;
+    }
+
     public static LinkedListImpl insertElement(LinkedListImpl list, int value){
         Node new_node = new Node(value);
         if(list.head==null){
@@ -38,6 +81,14 @@ public class LinkedListImpl {
         LinkedListImpl list = new LinkedListImpl();
         insertElement(list,25);
         insertElement(list,30);
+        insertElement(list,300);
+        insertElement(list,1000);
+        printLinkedList(list);
+        System.out.println("=========================");
+        insertElementAtPosition(list,100,1);
+        printLinkedList(list);
+        deleteElementAtPosition(list,1);
+        System.out.println("=========================");
         printLinkedList(list);
     }
 }
