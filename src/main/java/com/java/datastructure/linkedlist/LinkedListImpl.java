@@ -19,6 +19,33 @@ public class LinkedListImpl {
          }
     }
 
+    public static LinkedListImpl reverseList(LinkedListImpl list){
+
+         Node currentNode = list.head;
+         Node prevNode = null;
+        Node nextNode = null;
+         while(currentNode.next!=null){
+              nextNode = currentNode.next;
+             currentNode.next = prevNode;
+             prevNode = currentNode;
+             currentNode = nextNode;
+         }
+        currentNode.next = prevNode;
+         list.head = currentNode;
+         return list;
+    }
+
+    public static void reverseListRecusively(Node currNode,Node prevNode,LinkedListImpl list){
+         if(currNode==null){
+             list.head=prevNode;
+             return;
+         }
+         Node nextNode = currNode.next;
+        currNode.next = prevNode;
+        prevNode = currNode;
+        reverseListRecusively(nextNode,prevNode,list);
+    }
+
     public static LinkedListImpl deleteElementAtPosition(LinkedListImpl list, int position){
          Node current_node = list.head;
         int i=1;
@@ -89,6 +116,11 @@ public class LinkedListImpl {
         printLinkedList(list);
         deleteElementAtPosition(list,1);
         System.out.println("=========================");
+        printLinkedList(list);
+        System.out.println("=========================");
+        printLinkedList(reverseList(list));
+        System.out.println("=========================*****++++++++++++++++++++");
+        reverseListRecusively(list.head,null,list);
         printLinkedList(list);
     }
 }
