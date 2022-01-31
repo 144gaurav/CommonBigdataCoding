@@ -1,0 +1,21 @@
+GIT COmmands
+
+git init
+git remote add origin "clone url"
+git pull origin master
+
+Add new Code
+
+git status
+git add . or git add file_name
+git commit -m "commit message "
+git add . (adding all files all at once)
+git commit -a -m "commit all"
+
+git branch firstbranch
+git checkout firstbranch => (swicth branch from master to fristbranch)
+git merge firstbranch =>(Be inside destination branch)
+git rebase firstbranch => (for linear commit history - this is used)
+git push origin firstbranch
+git log > for all commit logs
+git checkout 61f729415120ace0ae9982104253f2124e96d02a file_name = > rvert the changes from previous version
