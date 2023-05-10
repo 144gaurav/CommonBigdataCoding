@@ -5,20 +5,29 @@ import java.util.Map;
 
 public class BuySellStock {
     public static void main(String[] args) {
-        int[] prices = {3,2,6,5,0,3,4,7};
+        int[] prices = {7,6,4,3,1};
         System.out.println(findMaxProfit(prices));
     }
 
     public static int findMaxProfit(int[] prices){
-        int profit = 0;
-        int minPrice = Integer.MAX_VALUE;
-        for(int i=0 ; i<prices.length ; i ++){
-            if(minPrice > prices[i])
-                minPrice = prices[i];
-            else if(prices[i] - minPrice > profit)
-                profit = prices[i] - minPrice;
+        int maxProfit = 0;
+        int minbuy = 0;
+        for(int i=1; i<prices.length;i++){
+            maxProfit = Math.max(maxProfit,(prices[i] - prices[minbuy]));
+            if(prices[minbuy] > prices[i])
+                minbuy = i;
         }
-        return profit > 0 ? profit : 0;
+        return maxProfit;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
 
